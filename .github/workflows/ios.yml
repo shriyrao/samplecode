@@ -30,10 +30,14 @@ jobs:
           xcodebuild -scheme ofcwork -project ofcwork.xcodeproj -archivePath ofcwork.xcarchive -derivedDataPath .  -configuration "Release" CODE_SIGN_IDENTITY="" CODE_SIGNING_ALLOWED=NO archive
 
       - name: SonarQube Scan
-        uses: sonarsource/sonarqube-scan-action@master
+        uses: SonarSource/sonarqube-scan-action@v2.3.0
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} 
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+          projectBaseDir: .
+          args: >
+            -Dsonar.name=test-sample
       # - name: Test
       #   env:
       #     scheme: ${{ 'default' }}
