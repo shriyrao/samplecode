@@ -33,9 +33,10 @@ jobs:
       - name: Download and install the SonarScanner
         run: |
           pwd
-          echo $HOME
+          #echo $HOME
           curl -o $HOME/.sonar/sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-macosx.zip
-          unzip -o $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/
+          ls -al
+          unzip $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/
       - name: SonarQube Scan
         run: |
           $HOME/.sonar/sonar-scanner
