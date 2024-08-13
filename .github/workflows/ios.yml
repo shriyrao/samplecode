@@ -34,7 +34,7 @@ jobs:
         run: |
           #pwd
           #echo $HOME
-          curl -o $HOME/.sonar/sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-macosx.zip
+          curl -o sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-macosx.zip
           ls -al
           sleep 5s
           #unzip $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/
