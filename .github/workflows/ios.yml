@@ -36,13 +36,12 @@ jobs:
           curl -sSLo $HOME/.sonar/sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-macosx.zip
           unzip -o $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/
       - name: SonarQube Scan
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} 
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        with:
-          projectBaseDir: .
+        run: |
+          $HOME/.sonar/sonar-scanner
           args: >
             -Dsonar.name=test-sample
+            -Dsonar.token=${{ secrets.SONAR_TOKEN }} 
+            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
             -Dsonar.key=test-sample
             -Dsonar.sourceEncoding=UTF-8
             -Dsonar.swift.appScheme=ofcwork
@@ -51,9 +50,7 @@ jobs:
             -Dsonar.projectVersion=1.0.0.1
             -Dsonar.sources=.
             -Dsonar.swift.simulator=platform=iOS Simulator,name=iPhone 14,OS=16.4
-      - name: Scan
-        run: |
-          $HOME/.sonar/sonar-scanner
+
       # - name: Test
       #   env:
       #     scheme: ${{ 'default' }}
