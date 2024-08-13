@@ -26,6 +26,7 @@ jobs:
           scheme: ${{ 'default' }}
           platform: ${{ 'iOS Simulator' }}
         run: |
+          pwd
           # pod install
           #xcodebuild -scheme ofcwork -project ofcwork.xcodeproj -archivePath ofcwork.xcarchive -derivedDataPath .  -configuration "Release" CODE_SIGN_IDENTITY="" CODE_SIGNING_ALLOWED=NO archive
           
@@ -33,7 +34,7 @@ jobs:
         run: |
           pwd
           echo $HOME
-          curl -sSLo $HOME/.sonar/sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-macosx.zip
+          curl -O $HOME/.sonar/sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-macosx.zip
           unzip -o $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/
       - name: SonarQube Scan
         run: |
