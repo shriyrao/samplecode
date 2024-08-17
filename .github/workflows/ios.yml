@@ -7,13 +7,13 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-    name: Build and Test default scheme using any available iPhone simulator
-    runs-on: macos-latest
+  # build:
+  #   name: Build and Test default scheme using any available iPhone simulator
+  #   runs-on: macos-latest
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
       # - name: Set Default Scheme
       #   run: |
       #     scheme_list=$(xcodebuild -list -json | tr -d "\n")
@@ -23,6 +23,8 @@ jobs:
   sonarscan:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name : sonar
         uses: SonarSource/sonarqube-scan-action@v3.0.0
         env:
