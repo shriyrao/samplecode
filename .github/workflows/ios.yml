@@ -32,8 +32,8 @@ jobs:
         with:
           projectBaseDir: .
           args: >
-            -Dsonar.projectKey=shriyrao
-            -Dsonar.projectName=ofcwork
+            -Dsonar.projectKey=shriyrao_samplecode
+            -Dsonar.projectName=samplecode
             -Dsonar.projectVersion=1.0
             -Dsonar.language=swift
             -Dsonar.projectDescription="" 
