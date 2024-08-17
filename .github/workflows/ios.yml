@@ -28,8 +28,21 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           #token: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          sonar-scanner
+        with:
+          projectBaseDir: app/src
+          args: >
+            -Dsonar.projectKey=ofcwork
+            -Dsonar.projectName=ofcwork
+            -Dsonar.projectVersion=1.0
+            -Dsonar.language=swift
+            -Dsonar.projectDescription="" 
+            -Dsonar.sources=.
+            -Dsonar.exclusions=**/*.html,**/*.json,**/*.xml
+            -Dsonar.swift.simulator=platform=iOS Simulator,name=iPhone 14,OS=16.4
+            -Dsonar.swift.workspace=ofcwork.xcworkspace
+            -Dsonar.swift.appScheme=ofcwork
+            -Dsonar.sourceEncoding=UTF-8
+            -Dsonar.swift.excludedPathsFromCoverage=.*Tests.*
         
       # - name: Build
       #   env:
