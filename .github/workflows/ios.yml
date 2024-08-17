@@ -39,7 +39,6 @@ jobs:
             -Dsonar.projectDescription="" 
             -Dsonar.sources=.
             -Dsonar.exclusions=**/*.html,**/*.json,**/*.xml
-            -Dsonar.swift.simulator=platform=iOS Simulator,name=iPhone 14,OS=16.4
             -Dsonar.swift.workspace=ofcwork.xcworkspace
             -Dsonar.swift.appScheme=ofcwork
             -Dsonar.sourceEncoding=UTF-8
