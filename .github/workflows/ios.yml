@@ -43,6 +43,7 @@ jobs:
             -Dsonar.swift.appScheme=ofcwork
             -Dsonar.sourceEncoding=UTF-8
             -Dsonar.swift.excludedPathsFromCoverage=.*Tests.*
+            -Dsonar.organization=shriyrao
         
       # - name: Build
       #   env:
