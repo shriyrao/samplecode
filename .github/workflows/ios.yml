@@ -26,8 +26,8 @@ jobs:
       - name : sonar
         uses: SonarSource/sonarqube-scan-action@v1.1.0
         env:
-          sonar_token: ${{ secrets.SONAR_TOKEN }}
-          sonar_url: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           #token: ${{ secrets.GITHUB_TOKEN }}
         
       # - name: Build
