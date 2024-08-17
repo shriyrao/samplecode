@@ -30,7 +30,7 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           #token: ${{ secrets.GITHUB_TOKEN }}
         with:
-          projectBaseDir: app/src
+          projectBaseDir: .
           args: >
             -Dsonar.projectKey=ofcwork
             -Dsonar.projectName=ofcwork
