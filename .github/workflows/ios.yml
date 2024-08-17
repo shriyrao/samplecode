@@ -20,7 +20,13 @@ jobs:
       #     default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
       #     echo $default | cat >default
       #     echo Using default scheme: $default
-          
+      
+      - name : sonar
+        uses: SonarSource/sonarqube-scan-action@v1.1.0
+        env:
+          sonar_token: ${{ secrets.ORG_SONAR_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+        
       # - name: Build
       #   env:
       #     scheme: ${{ 'default' }}
@@ -30,32 +36,32 @@ jobs:
           # pod install
           #xcodebuild -scheme ofcwork -project ofcwork.xcodeproj -archivePath ofcwork.xcarchive -derivedDataPath .  -configuration "Release" CODE_SIGN_IDENTITY="" CODE_SIGNING_ALLOWED=NO archive
           
-      - name: Download and install the SonarScanner
-        run: |
-          #pwd
-          #echo $HOME
-          curl -o sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-macosx.zip
-          ls -al
-          sleep 5s
-          #unzip $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/
-      - name: SonarQube Scan
-        run: |
-          $HOME/.sonar/sonar-scanner
-          cat > sonar-project.properties <<- "EOF" 
-            sonar.name=test-sample
-            sonar.token=${{ secrets.SONAR_TOKEN }} 
-            sonar.host.url=${{ secrets.SONAR_HOST_URL }}
-            sonar.key=test-sample
-            sonar.sourceEncoding=UTF-8
-            sonar.swift.appScheme=ofcwork
-            sonar.swift.project=ofcwork.xcodeproj
-            sonar.swift.excludedPathsFromCoverage=.*Tests.*
-            sonar.projectVersion=1.0.0.1
-            sonar.sources=.
-            sonar.swift.simulator=platform=iOS Simulator,name=iPhone 14,OS=16.4
-            EOF
+      # - name: Download and install the SonarScanner
+      #   run: |
+      #     #pwd
+      #     #echo $HOME
+      #     curl -o sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-macosx.zip
+      #     ls -al
+      #     sleep 5s
+      #     #unzip $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/
+      # - name: SonarQube Scan
+      #   run: |
+      #     $HOME/.sonar/sonar-scanner
+      #     cat > sonar-project.properties <<- "EOF" 
+      #       sonar.name=test-sample
+      #       sonar.token=${{ secrets.SONAR_TOKEN }} 
+      #       sonar.host.url=${{ secrets.SONAR_HOST_URL }}
+      #       sonar.key=test-sample
+      #       sonar.sourceEncoding=UTF-8
+      #       sonar.swift.appScheme=ofcwork
+      #       sonar.swift.project=ofcwork.xcodeproj
+      #       sonar.swift.excludedPathsFromCoverage=.*Tests.*
+      #       sonar.projectVersion=1.0.0.1
+      #       sonar.sources=.
+      #       sonar.swift.simulator=platform=iOS Simulator,name=iPhone 14,OS=16.4
+      #       EOF
 
-            ls -al
+      #       ls -al
 
       # - name: Test
       #   env:
