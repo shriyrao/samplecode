@@ -32,7 +32,7 @@ jobs:
         with:
           projectBaseDir: .
           args: >
-            -Dsonar.projectKey=ofcwork
+            -Dsonar.projectKey=shriyrao
             -Dsonar.projectName=ofcwork
             -Dsonar.projectVersion=1.0
             -Dsonar.language=swift
@@ -44,6 +44,7 @@ jobs:
             -Dsonar.sourceEncoding=UTF-8
             -Dsonar.swift.excludedPathsFromCoverage=.*Tests.*
             -Dsonar.organization=shriyrao
+
         
       # - name: Build
       #   env:
